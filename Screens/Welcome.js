@@ -1,5 +1,4 @@
 import { View, TouchableOpacity, Text, StyleSheet, Dimensions } from 'react-native';
-import { useNavigation } from '@react-navigation/native'; 
 import React from 'react'
 
 const { width } = Dimensions.get('window');
@@ -7,7 +6,7 @@ const buttonWidth = width * 0.4;
 
 export default function Home() {
 
-  const navigation = useNavigation(); 
+  
 
   const guestLoginButton = () => {
    
@@ -48,7 +47,7 @@ export default function Home() {
       marginVertical: 10,
     },
     buttonText: {
-      color: '#ffffff', // Button text color
+      color: '#ffffff', 
       fontWeight: 'bold',
       textAlign: 'center'
     },
