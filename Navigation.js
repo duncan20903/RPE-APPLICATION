@@ -6,7 +6,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 import Home from "./Screens/Home";
 import { StyleSheet} from 'react-native';
-import Settings from './Screens/Settings';
+import User from './Screens/User';
 import Graphs from './Screens/Graph';
 
 
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
 export default function Navigation() {
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={screenOptions}>
+      <Tab.Navigator screenOptions={screenOptions} initialRouteName="Home">
       <Tab.Screen 
           name="Graphs" 
           component={Graphs} 
@@ -69,8 +69,8 @@ export default function Navigation() {
           }}
           />
           <Tab.Screen 
-          name="Settings" 
-          component={Settings} 
+          name="User" 
+          component={User} 
           options={{
             tabBarIcon: ({focused})=>{
               return (
