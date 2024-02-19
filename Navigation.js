@@ -1,12 +1,16 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text } from 'react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
+
 
 import Home from "./Screens/Home";
 import { StyleSheet} from 'react-native';
+import Settings from './Screens/Settings';
+import Graphs from './Screens/Graph';
 
 
-const Tab =createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 const screenOptions = {
   tabBarShowLabel:false,
   headerShown:false,
@@ -17,17 +21,20 @@ const screenOptions = {
     left: 0,
     elevation: 0,
     height: 60,
-    background: "#fff"
+    backgroundColor: "#2B2D42",
+    
   }
+  
 }
 
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#2B2D42',
     alignItems: 'center',
     justifyContent: 'center',
+    
   },
 });
 
@@ -37,12 +44,12 @@ export default function Navigation() {
       <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen 
           name="Graphs" 
-          component={Home} 
+          component={Graphs} 
           options={{
             tabBarIcon: ({focused})=>{
               return (
                 <View style={styles.container}> 
-                  <Text style={{fontSize: 12, color: "#16247d"}}>GRAPHS</Text>
+                  <Ionicons name="bar-chart" size={32} color="white" />
             </View>
               )
             }
@@ -55,7 +62,7 @@ export default function Navigation() {
             tabBarIcon: ({focused})=>{
               return (
                 <View style={styles.container}> 
-                  <Text style={{fontSize: 12, color: "#16247d"}}>HOME</Text>
+                  <Ionicons name="add-circle" size={32} color="#66AEC5" />
             </View>
               )
             }
@@ -63,12 +70,12 @@ export default function Navigation() {
           />
           <Tab.Screen 
           name="Settings" 
-          component={Home} 
+          component={Settings} 
           options={{
             tabBarIcon: ({focused})=>{
               return (
                 <View style={styles.container}> 
-                  <Text style={{fontSize: 12, color: "#16247d"}}>SETTINGS</Text>
+                  <Ionicons name="person" size={32} color="white" />
             </View>
               )
             }
