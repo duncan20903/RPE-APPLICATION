@@ -15,6 +15,7 @@ export default function Home() {
   const getStartedButton = () => {
    
   };
+  
     return (
       <View style={styles.container}>
         <View style={styles.bottomContainer}>
