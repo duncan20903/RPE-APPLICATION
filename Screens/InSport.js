@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, ScrollView } from "react-native";
 import BackButton from "../Components/BackButton";
 import React from 'react'
 import Ionicons from "@expo/vector-icons/Ionicons";
+import TimePicker from "../Components/TimePicker";
 
 export default function InSport({navigation}) {
   return (
@@ -34,10 +35,10 @@ export default function InSport({navigation}) {
       </View>
     </View>
     <View style={styles.inputContainer}>
-    <Text style={styles.text}>Time: </Text>
+      <TimePicker />
     </View>
     <View style={styles.inputContainer}>
-    <Text style={styles.text}>Workout</Text>
+    <Text style={styles.text}>Workout: </Text>
     </View>
     </ScrollView>
     </View>
