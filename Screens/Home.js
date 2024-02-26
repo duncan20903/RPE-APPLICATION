@@ -1,10 +1,20 @@
 import { View, Text, StyleSheet, ScrollView, ImageBackground, TouchableOpacity } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 
 import Ionicons from "@expo/vector-icons/Ionicons";
 import React from "react";
 
 
+
 export default function Home() {
+
+  const navigation = useNavigation();
+
+  const handleSportPress = () => {
+    
+    navigation.navigate('InSportPage');
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.settingsContainer}>
@@ -16,7 +26,7 @@ export default function Home() {
           <View style={styles.row}>
             {/* TODO CREATE COMPONENT FOR EACH ITEM*/}
             <View style={styles.item}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={handleSportPress}>
                 <ImageBackground
                   source={{ uri: "https://images.unsplash.com/photo-1530549387789-4c1017266635?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }} 
                   style={styles.item}

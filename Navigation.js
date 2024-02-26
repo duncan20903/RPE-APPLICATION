@@ -1,16 +1,18 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
-
-
 import Home from "./Screens/Home";
 import { StyleSheet} from 'react-native';
 import User from './Screens/User';
-import Graphs from './Screens/Graph';
+import { createStackNavigator } from '@react-navigation/stack'
+import BackButton from './Components/BackButton';
 
+import Graphs from './Screens/Graph';
+import InSport from "./Screens/InSport";
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator()
 const screenOptions = {
   tabBarShowLabel:false,
   headerShown:false,
@@ -28,15 +30,6 @@ const screenOptions = {
 }
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#2B2D42',
-    alignItems: 'center',
-    justifyContent: 'center',
-    
-  },
-});
 
 export default function Navigation() {
   return (
@@ -54,10 +47,11 @@ export default function Navigation() {
               )
             }
           }}
+          
           />
           <Tab.Screen 
           name="Home" 
-          component={Home} 
+          component={HomeStack} 
           options={{
             tabBarIcon: ({focused})=>{
               return (
@@ -85,3 +79,22 @@ export default function Navigation() {
     </NavigationContainer>
   )
 }
+
+const HomeStack = () => {
+  return (
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="WelcomePage" component={Home} />
+      <Stack.Screen name="InSportPage" component={InSport} />
+    </Stack.Navigator>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#2B2D42',
+    alignItems: 'center',
+    justifyContent: 'center',
+    
+  },
+});
