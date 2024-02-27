@@ -11,6 +11,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Graphs from './Screens/Graph';
 import Welcome from "./Screens/Welcome"
 import InSport from "./Screens/InSport";
+import GenderPick from './Screens/GenderPick';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -30,7 +31,7 @@ const screenOptions = {
 }
 
 
-
+// Main navigation component
 export default function Navigation() {
   
   const [signedIn, setSignedIn] = useState(false); 
@@ -39,6 +40,7 @@ export default function Navigation() {
   return (
     <NavigationContainer>
       {signedIn ? (
+        // Analytics graphs etc
         <Tab.Navigator screenOptions={screenOptions} initialRouteName="Home">
           <Tab.Screen 
             name="Graphs" 
@@ -51,6 +53,7 @@ export default function Navigation() {
               )
             }}
           />
+          {/* Home pages sports etc */}
           <Tab.Screen 
             name="Home" 
             component={HomeStack} 
@@ -62,6 +65,7 @@ export default function Navigation() {
               )
             }}
           />
+          {/* Settings pages */}
           <Tab.Screen 
             name="User" 
             component={User} 
@@ -81,7 +85,7 @@ export default function Navigation() {
   );
 }
 
-
+// Stack navigator for home screens
 const HomeStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
@@ -91,12 +95,16 @@ const HomeStack = () => {
   );
 };
 
+// Stack navigator for welcome screen
+// Loading pages etc
 const WelcomeStack = ({ setSignedIn }) => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="WelcomePage">
         {(props) => <Welcome {...props} setSignedIn={setSignedIn} />}
+        
       </Stack.Screen>
+      <Stack.Screen name="GenderPick" component={GenderPick} />
     </Stack.Navigator>
   );
 }
