@@ -4,16 +4,15 @@ import React from 'react'
 const { width } = Dimensions.get('window');
 const buttonWidth = width * 0.4; 
 
-export default function Home() {
+export default function Home({ setSignedIn} ) {
 
-  
 
   const guestLoginButton = () => {
-   
+    setSignedIn(true);
   };
 
   const getStartedButton = () => {
-   
+    
   };
   
     return (
@@ -34,6 +33,7 @@ export default function Home() {
     container: {
       flex: 1,
       justifyContent: 'flex-end',
+      backgroundColor: '#2B2D42',
     },
     bottomContainer: {
       flexDirection: 'column',

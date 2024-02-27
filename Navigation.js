@@ -2,8 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
-
-
+import { useState } from "react"
 import Home from "./Screens/Home";
 import { StyleSheet} from 'react-native';
 import User from './Screens/User';
@@ -31,53 +30,57 @@ const screenOptions = {
 }
 
 
+
 export default function Navigation() {
+  
+  const [signedIn, setSignedIn] = useState(false); 
+  
+  
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={screenOptions} initialRouteName="Home">
-      <Tab.Screen 
-          name="Graphs" 
-          component={Graphs} 
-          options={{
-            tabBarIcon: ({focused})=>{
-              return (
+      {signedIn ? (
+        <Tab.Navigator screenOptions={screenOptions} initialRouteName="Home">
+          <Tab.Screen 
+            name="Graphs" 
+            component={Graphs} 
+            options={{
+              tabBarIcon: ({focused}) => (
                 <View style={styles.container}> 
                   <Ionicons name="bar-chart" size={32} color="white" />
                 </View>
               )
-            }
-          }}
+            }}
           />
           <Tab.Screen 
-          name="Home" 
-          component={HomeStack} 
-          options={{
-            tabBarIcon: ({focused})=>{
-              return (
+            name="Home" 
+            component={HomeStack} 
+            options={{
+              tabBarIcon: ({focused}) => (
                 <View style={styles.container}> 
                   <Ionicons name="add-circle" size={32} color="#66AEC5" />
-            </View>
+                </View>
               )
-            }
-          }}
+            }}
           />
           <Tab.Screen 
-          name="User" 
-          component={User} 
-          options={{
-            tabBarIcon: ({focused})=>{
-              return (
+            name="User" 
+            component={User} 
+            options={{
+              tabBarIcon: ({focused}) => (
                 <View style={styles.container}> 
                   <Ionicons name="person" size={32} color="white" />
-            </View>
+                </View>
               )
-            }
-          }}
+            }}
           />
-      </Tab.Navigator>
+        </Tab.Navigator>
+      ) : (
+        <WelcomeStack setSignedIn={setSignedIn} />
+      )}
     </NavigationContainer>
-  )
+  );
 }
+
 
 const HomeStack = () => {
   return (
@@ -88,14 +91,16 @@ const HomeStack = () => {
   );
 };
 
-const WelcomeStack = () => {
-  return(
-    <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="WelcomePage" component={Welcome} />
-      
+const WelcomeStack = ({ setSignedIn }) => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="WelcomePage">
+        {(props) => <Welcome {...props} setSignedIn={setSignedIn} />}
+      </Stack.Screen>
     </Stack.Navigator>
-  )
+  );
 }
+
 
 const styles = StyleSheet.create({
   container: {
