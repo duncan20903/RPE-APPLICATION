@@ -7,8 +7,16 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Home from "./Screens/Home";
 import { StyleSheet} from 'react-native';
 import User from './Screens/User';
+<<<<<<< HEAD
+import { createStackNavigator } from '@react-navigation/stack'
+
+import Graphs from './Screens/Graph';
+import Welcome from "./Screens/Welcome"
+import InSport from "./Screens/InSport";
+=======
 import Graphs from './Screens/Graph';
 
+>>>>>>> 75e0f4f9b6062c4e92dd5cbddb79456c928fa8ed
 
 const Tab = createBottomTabNavigator();
 const screenOptions = {
@@ -22,9 +30,7 @@ const screenOptions = {
     elevation: 0,
     height: 60,
     backgroundColor: "#2B2D42",
-    
-  }
-  
+  }  
 }
 
 
@@ -50,7 +56,7 @@ export default function Navigation() {
               return (
                 <View style={styles.container}> 
                   <Ionicons name="bar-chart" size={32} color="white" />
-            </View>
+                </View>
               )
             }
           }}
@@ -85,3 +91,34 @@ export default function Navigation() {
     </NavigationContainer>
   )
 }
+<<<<<<< HEAD
+
+const HomeStack = () => {
+  return (
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="HomePage" component={Home} />
+      <Stack.Screen name="InSportPage" component={InSport} />
+    </Stack.Navigator>
+  );
+};
+
+const WelcomeStack = () => {
+  return(
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="WelcomePage" component={Welcome} />
+      
+    </Stack.Navigator>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#2B2D42',
+    alignItems: 'center',
+    justifyContent: 'center',
+    
+  },
+});
+=======
+>>>>>>> 75e0f4f9b6062c4e92dd5cbddb79456c928fa8ed

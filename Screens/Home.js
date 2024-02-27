@@ -1,10 +1,27 @@
 import { View, Text, StyleSheet, ScrollView, ImageBackground, TouchableOpacity } from "react-native";
+<<<<<<< HEAD
+import { useNavigation } from '@react-navigation/native';
+=======
 
+>>>>>>> 75e0f4f9b6062c4e92dd5cbddb79456c928fa8ed
 import Ionicons from "@expo/vector-icons/Ionicons";
-import React from "react";
+import React,{ useState } from "react";
 
 
 export default function Home() {
+<<<<<<< HEAD
+
+  const navigation = useNavigation();
+  const [selectedSport, setSelectedSport] = useState(null);
+
+
+  const handleSportPress = (sport) => {
+    setSelectedSport(sport);
+    navigation.navigate('InSportPage', { selectedSport: sport });
+  };
+
+=======
+>>>>>>> 75e0f4f9b6062c4e92dd5cbddb79456c928fa8ed
   return (
     <View style={styles.container}>
       <View style={styles.settingsContainer}>
@@ -16,7 +33,11 @@ export default function Home() {
           <View style={styles.row}>
             {/* TODO CREATE COMPONENT FOR EACH ITEM*/}
             <View style={styles.item}>
+<<<<<<< HEAD
+              <TouchableOpacity onPress={() => handleSportPress("Swimming")}>
+=======
               <TouchableOpacity>
+>>>>>>> 75e0f4f9b6062c4e92dd5cbddb79456c928fa8ed
                 <ImageBackground
                   source={{ uri: "https://images.unsplash.com/photo-1530549387789-4c1017266635?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }} 
                   style={styles.item}
@@ -29,7 +50,7 @@ export default function Home() {
               </TouchableOpacity>
             </View>
             <View style={styles.item}>
-              <TouchableOpacity>
+              <TouchableOpacity  onPress={() => handleSportPress("Running")}>
                 <ImageBackground
                   source={{ uri: "https://plus.unsplash.com/premium_photo-1664537976485-86c3a5d22ce9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }} 
                   style={styles.item}
@@ -44,7 +65,7 @@ export default function Home() {
           </View>
           <View style={styles.row}>
           <View style={styles.item}>
-              <TouchableOpacity>
+              <TouchableOpacity  onPress={() => handleSportPress("Cycling")}>
                 <ImageBackground
                   source={{ uri: "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }} 
                   style={styles.item}
@@ -57,7 +78,7 @@ export default function Home() {
               </TouchableOpacity>
             </View>
             <View style={styles.item}>
-              <TouchableOpacity>
+              <TouchableOpacity  onPress={() => handleSportPress("Skiing")}>
                 <ImageBackground
                   source={{ uri: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }} 
                   style={styles.item}
@@ -72,7 +93,7 @@ export default function Home() {
           </View>
           <View style={styles.row}>
           <View style={styles.item}>
-              <TouchableOpacity>
+              <TouchableOpacity  onPress={() => handleSportPress("XC")}>
                 <ImageBackground
                   source={{ uri: "https://images.unsplash.com/photo-1638149216002-1885e715f9d3?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }} 
                   style={styles.item}
@@ -85,7 +106,7 @@ export default function Home() {
               </TouchableOpacity>
             </View>
             <View style={styles.item}>
-              <TouchableOpacity>
+              <TouchableOpacity  onPress={() => handleSportPress("Other")}>
                 <ImageBackground
                   source={{ uri: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }} 
                   style={styles.item}
