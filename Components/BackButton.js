@@ -5,7 +5,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 const BackButton = ({ onPress }) => {
   return (
     <TouchableOpacity style={styles.backButton} onPress={onPress}>
-      <Ionicons name="arrow-back" size={24} color="white" />
+      <Ionicons name="arrow-back" size={30} color="white" />
     </TouchableOpacity>
   );
 };

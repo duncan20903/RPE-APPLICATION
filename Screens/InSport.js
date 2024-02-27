@@ -2,15 +2,17 @@ import { View, Text, StyleSheet, ScrollView } from "react-native";
 import BackButton from "../Components/BackButton";
 import React from 'react'
 import Ionicons from "@expo/vector-icons/Ionicons";
+import TimePicker from "../Components/TimePicker";
 
-export default function InSport({navigation}) {
+export default function InSport({navigation, route}) {
+  const { selectedSport } = route.params;
   return (
     <View style={styles.container}>
       
       <BackButton onPress={() => navigation.goBack()} />
       <ScrollView style={styles.scrollView}>
        <View style={styles.settingsContainer}>
-        <Text style={{ fontSize: 20, color: "white" }}>{"**Sport Name**"}</Text>
+        <Text style={{ fontSize: 20, color: "white" }}>{selectedSport}</Text>
         <Ionicons name="settings-sharp" size={32} color="white" />
       </View>
       <View style={styles.RPEcontainer}>
@@ -34,10 +36,10 @@ export default function InSport({navigation}) {
       </View>
     </View>
     <View style={styles.inputContainer}>
-    <Text style={styles.text}>Time: </Text>
+      <TimePicker />
     </View>
     <View style={styles.inputContainer}>
-    <Text style={styles.text}>Workout</Text>
+    <Text style={styles.text}>Workout: {selectedSport}</Text>
     </View>
     </ScrollView>
     </View>
@@ -78,6 +80,7 @@ const styles = StyleSheet.create({
     margin:25,
     backgroundColor: '#1B1727',
     borderRadius: 15,
+    textAlign: 'center'
   },
   scrollView: {
     height: "100%",

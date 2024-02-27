@@ -1,18 +1,20 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useState } from "react"
 import Home from "./Screens/Home";
 import { StyleSheet} from 'react-native';
 import User from './Screens/User';
 import { createStackNavigator } from '@react-navigation/stack'
-import BackButton from './Components/BackButton';
 
 import Graphs from './Screens/Graph';
+import Welcome from "./Screens/Welcome"
 import InSport from "./Screens/InSport";
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator()
+const Stack = createStackNavigator();
+
 const screenOptions = {
   tabBarShowLabel:false,
   headerShown:false,
@@ -24,70 +26,81 @@ const screenOptions = {
     elevation: 0,
     height: 60,
     backgroundColor: "#2B2D42",
-    
-  }
-  
+  }  
 }
 
 
 
 export default function Navigation() {
+  
+  const [signedIn, setSignedIn] = useState(false); 
+  
+  
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={screenOptions} initialRouteName="Home">
-      <Tab.Screen 
-          name="Graphs" 
-          component={Graphs} 
-          options={{
-            tabBarIcon: ({focused})=>{
-              return (
+      {signedIn ? (
+        <Tab.Navigator screenOptions={screenOptions} initialRouteName="Home">
+          <Tab.Screen 
+            name="Graphs" 
+            component={Graphs} 
+            options={{
+              tabBarIcon: ({focused}) => (
                 <View style={styles.container}> 
                   <Ionicons name="bar-chart" size={32} color="white" />
-            </View>
+                </View>
               )
-            }
-          }}
-          
+            }}
           />
           <Tab.Screen 
-          name="Home" 
-          component={HomeStack} 
-          options={{
-            tabBarIcon: ({focused})=>{
-              return (
+            name="Home" 
+            component={HomeStack} 
+            options={{
+              tabBarIcon: ({focused}) => (
                 <View style={styles.container}> 
                   <Ionicons name="add-circle" size={32} color="#66AEC5" />
-            </View>
+                </View>
               )
-            }
-          }}
+            }}
           />
           <Tab.Screen 
-          name="User" 
-          component={User} 
-          options={{
-            tabBarIcon: ({focused})=>{
-              return (
+            name="User" 
+            component={User} 
+            options={{
+              tabBarIcon: ({focused}) => (
                 <View style={styles.container}> 
                   <Ionicons name="person" size={32} color="white" />
-            </View>
+                </View>
               )
-            }
-          }}
+            }}
           />
-      </Tab.Navigator>
+        </Tab.Navigator>
+      ) : (
+        <WelcomeStack setSignedIn={setSignedIn} />
+      )}
     </NavigationContainer>
-  )
+  );
 }
+
 
 const HomeStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="WelcomePage" component={Home} />
+      <Stack.Screen name="HomePage" component={Home} />
       <Stack.Screen name="InSportPage" component={InSport} />
     </Stack.Navigator>
   );
 };
+
+const WelcomeStack = ({ setSignedIn }) => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="WelcomePage">
+        {(props) => <Welcome {...props} setSignedIn={setSignedIn} />}
+      </Stack.Screen>
+    </Stack.Navigator>
+  );
+}
+
 
 const styles = StyleSheet.create({
   container: {
