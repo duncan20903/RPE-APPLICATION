@@ -1,15 +1,10 @@
 import { View, Text, StyleSheet, ScrollView, ImageBackground, TouchableOpacity } from "react-native";
-<<<<<<< HEAD
 import { useNavigation } from '@react-navigation/native';
-=======
-
->>>>>>> 75e0f4f9b6062c4e92dd5cbddb79456c928fa8ed
 import Ionicons from "@expo/vector-icons/Ionicons";
 import React,{ useState } from "react";
 
 
 export default function Home() {
-<<<<<<< HEAD
 
   const navigation = useNavigation();
   const [selectedSport, setSelectedSport] = useState(null);
@@ -20,8 +15,6 @@ export default function Home() {
     navigation.navigate('InSportPage', { selectedSport: sport });
   };
 
-=======
->>>>>>> 75e0f4f9b6062c4e92dd5cbddb79456c928fa8ed
   return (
     <View style={styles.container}>
       <View style={styles.settingsContainer}>
@@ -33,11 +26,7 @@ export default function Home() {
           <View style={styles.row}>
             {/* TODO CREATE COMPONENT FOR EACH ITEM*/}
             <View style={styles.item}>
-<<<<<<< HEAD
               <TouchableOpacity onPress={() => handleSportPress("Swimming")}>
-=======
-              <TouchableOpacity>
->>>>>>> 75e0f4f9b6062c4e92dd5cbddb79456c928fa8ed
                 <ImageBackground
                   source={{ uri: "https://images.unsplash.com/photo-1530549387789-4c1017266635?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }} 
                   style={styles.item}
