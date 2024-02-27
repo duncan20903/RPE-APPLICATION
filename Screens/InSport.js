@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
     margin:25,
     backgroundColor: '#1B1727',
     borderRadius: 15,
+    textAlign: 'center'
   },
   scrollView: {
     height: "100%",
