@@ -6,9 +6,9 @@ import Home from "./Screens/Home";
 import { StyleSheet} from 'react-native';
 import User from './Screens/User';
 import { createStackNavigator } from '@react-navigation/stack'
-import BackButton from './Components/BackButton';
 
 import Graphs from './Screens/Graph';
+import Welcome from "./Screens/Welcome"
 import InSport from "./Screens/InSport";
 
 const Tab = createBottomTabNavigator();
@@ -24,9 +24,7 @@ const screenOptions = {
     elevation: 0,
     height: 60,
     backgroundColor: "#2B2D42",
-    
-  }
-  
+  }  
 }
 
 
@@ -43,7 +41,7 @@ export default function Navigation() {
               return (
                 <View style={styles.container}> 
                   <Ionicons name="bar-chart" size={32} color="white" />
-            </View>
+                </View>
               )
             }
           }}
@@ -83,11 +81,20 @@ export default function Navigation() {
 const HomeStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="WelcomePage" component={Home} />
+      <Stack.Screen name="HomePage" component={Home} />
       <Stack.Screen name="InSportPage" component={InSport} />
     </Stack.Navigator>
   );
 };
+
+const WelcomeStack = () => {
+  return(
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="WelcomePage" component={Welcome} />
+      
+    </Stack.Navigator>
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
